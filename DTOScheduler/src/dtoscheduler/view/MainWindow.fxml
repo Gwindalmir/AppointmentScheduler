@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtoscheduler.controller.MainWindowController">
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="10.0">
+                            <children>
+                                <RadioButton fx:id="radioMonth" mnemonicParsing="false" onAction="#onSwitchCalender" selected="true" text="Month">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="Calendar" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" onAction="#onSwitchCalender" text="Week" toggleGroup="$Calendar" />
+                                <DatePicker fx:id="dateStart" showWeekNumbers="true" />
+                            </children>
+                        </HBox>
+                        <TableView fx:id="tableCalendar">
+                            <columns>
+                                <TableColumn prefWidth="150.0" text="Title">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="title" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="columnCustomer" prefWidth="100.0" text="Customer" />
+                                <TableColumn fx:id="columnStartTime" prefWidth="100.0" text="Time">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="start" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="columnDuration" prefWidth="60.0" text="Duration" />
+                                <TableColumn prefWidth="90.0" text="Type">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="type" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="columnConsultant" prefWidth="75.0" text="Consultant" />
+                            </columns>
+                        </TableView>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#onEditAppointment" text="Modify" />
+                                <Button mnemonicParsing="false" onAction="#onAddAppointment" text="Add" />
+                                <Button mnemonicParsing="false" onAction="#onDeleteAppointment" text="Delete" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" />
+                    </padding>
+                </VBox>
+            </center>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+            <bottom>
+                <HBox spacing="5.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#onSave" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#onDiscard" text="Discard" />
+                        <Button mnemonicParsing="false" onAction="#onManageCustomers" text="Manage Customers" />
+                        <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                            <children>
+                                <Label text="Reports:">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                                <Button mnemonicParsing="false" onAction="#onReportTypes" text="Types Per Month" />
+                                <Button mnemonicParsing="false" onAction="#onReportSchedule" text="Schedule" />
+                                <Button mnemonicParsing="false" onAction="#onReportTotalTime" text="Total Time Spent" />
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

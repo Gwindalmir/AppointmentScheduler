@@ -1,0 +1,1 @@
+Download mysql-connector-java-8.0.16.jar and place it into this directory.
